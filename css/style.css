@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "Stratum2WebBold";
+  src: url("http://oregonstate.edu/themes/osu/drupal8-osuhomepage/assets/fonts/Stratum2WebBold.woff2") format("woff2"),
+  url("http://oregonstate.edu/themes/osu/drupal8-osuhomepage/assets/fonts/Stratum2WebBold.woff") format("woff");
+}
+@font-face {
+  font-family: "RufinaStencilBold";
+  src: url("http://oregonstate.edu/themes/osu/drupal8-osuhomepage/assets/fonts/rufina-stencil-bold.woff2") format("woff2"),
+  url("http://oregonstate.edu/themes/osu/drupal8-osuhomepage/assets/fonts/rufina-stencil-bold.woff") format("woff");
+}
+/* Open Sans is also available to use.  *
+ *font-family: 'Open Sans', sans-serif; */
+ body, html {
+     margin:0;
+     padding:0;
+     height: 100%;
+     width: 100%;
+ }
+h1 {
+  font-family: "Stratum2WebBold";
+  font-size: 3em;
+  letter-spacing: 0px;
+  margin: 0em;
+  padding: 0px;
+
+}
+h2 {
+  font-family: "Stratum2WebBold";
+  font-size: 2em;
+  letter-spacing: 0px;
+  color: #fff;
+  padding: 0px;
+  margin: 0px;
+
+}
+header {
+  background-color: #DC4405;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+main {
+  height: 100%;
+}
+#content {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  background: white;
+  overflow: hidden;
+ }
+#header-text {
+  display: inline-block;
+  margin: 0.25em;
+}
+#map {
+  height: 100%;
+}
+#map-logo {
+  display: inline-block;
+  font-size: 5.5em;
+  margin-right: 0.1em;
+  margin-left: 0.1em;
+}
+#menu {
+  color: #000;
+  font-size: 3em;
+  float: right;
+  margin-right: 0.45em;
+  margin-top: 0.45em;
+}
+#menu:hover {
+  color: #fff;
+}
