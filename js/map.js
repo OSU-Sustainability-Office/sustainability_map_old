@@ -22,6 +22,35 @@ var toggleLayers = function toggleLayers(event) {
   toggleHidden(document.getElementById("layer-select"));
 }
 
+/* Toggle orange logos in hamburger menu */
+var colorOn = function colorOn(event) {
+  console.log("asdfasdf");
+  var logo = event.currentTarget.getElementsByTagName("I")[0];
+  logo.style["color"] = "#DC4405";
+  console.log("over");
+}
+var colorOff = function colorOff(event) {
+  var logo = event.currentTarget.getElementsByTagName("I")[0];
+  logo.style["color"] = "#fff";
+  console.log("out");
+}
+
+/* Toggle Hamburger Menu */
+var toggleMenu = function toggleMenu(event) {
+  toggleHidden(document.getElementById('hamburger-menu'));
+}
+
+/* Listener for layer select */
 var layerSelect = document.getElementById('layer-select-button');
-console.log("layerSelect");
 layerSelect.addEventListener("click", toggleLayers);
+
+/* Listener for hamburger menu button */
+var menu = document.getElementById('menu');
+menu.addEventListener("click", toggleMenu);
+
+/* Listener for links in hamburger menu */
+var hamburgerMenu = document.getElementById('hamburger-menu');
+for (var i = 0; i < hamburgerMenu.getElementsByTagName("A").length; i++) {
+  hamburgerMenu.getElementsByTagName("a")[i].addEventListener("mouseover", colorOn);
+  hamburgerMenu.getElementsByTagName("a")[i].addEventListener("mouseout", colorOff);
+}
