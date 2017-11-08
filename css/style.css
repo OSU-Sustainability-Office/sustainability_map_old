@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Stratum2WebBold";
-  src: url("fonts/Stratum2WebBold.woff2") format("woff2"),
-  url("fonts/Stratum2WebBold.woff") format("woff");
+  src: url("../fonts/Stratum2WebBold.woff2") format("woff2"),
+  url("../fonts/Stratum2WebBold.woff") format("woff");
 }
 @font-face {
   font-family: "RufinaStencilBold";
-  src: url("fonts/rufina-stencil-bold.woff2") format("woff2"),
-  url("fonts/rufina-stencil-bold.woff") format("woff");
+  src: url("../fonts/rufina-stencil-bold.woff2") format("woff2"),
+  url("../fonts/rufina-stencil-bold.woff") format("woff");
 }
 /* Open Sans is also available to use.  *
  *font-family: 'Open Sans', sans-serif; */
@@ -19,7 +19,7 @@
  }
 h1 {
   font-family: "Stratum2WebBold";
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: 0px;
   margin: 0em;
   padding: 0px;
@@ -27,7 +27,7 @@ h1 {
 }
 h2 {
   font-family: "Stratum2WebBold";
-  font-size: 2em;
+  font-size: 1.5em;
   letter-spacing: 0px;
   color: #fff;
   padding: 0px;
@@ -51,6 +51,9 @@ main {
 .hidden {
   display: none;
 }
+.layer-img {
+  height: inherit;
+}
 #content {
   display: flex;
   flex-flow: column;
@@ -61,7 +64,7 @@ main {
 #hamburger-menu {
   background-color: #000;
   color: #fff;
-  font-size: 1.5em;
+  font-size: 1em;
   padding: 1em;
   box-shadow: 3px 3px 3px #888888;
   position: absolute;
@@ -79,7 +82,7 @@ main {
 #layer-select {
   background-color: #000;
   color: #fff;
-  font-size: 1.5em;
+  font-size: 1em;
   padding: 1em;
   box-shadow: 3px 3px 3px #888888;
 }
@@ -109,13 +112,13 @@ main {
 }
 #map-logo {
   display: inline-block;
-  font-size: 5.5em;
+  font-size: 4.5em;
   margin-right: 0.1em;
   margin-left: 0.1em;
 }
 #menu {
   color: #000;
-  font-size: 3em;
+  font-size: 2.5em;
   float: right;
   margin-right: 0.45em;
   margin-top: 0.45em;
