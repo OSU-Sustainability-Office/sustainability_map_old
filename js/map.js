@@ -24,15 +24,12 @@ var toggleLayers = function toggleLayers(event) {
 
 /* Toggle orange logos in hamburger menu */
 var colorOn = function colorOn(event) {
-  console.log("asdfasdf");
   var logo = event.currentTarget.getElementsByTagName("I")[0];
   logo.style["color"] = "#DC4405";
-  console.log("over");
 }
 var colorOff = function colorOff(event) {
   var logo = event.currentTarget.getElementsByTagName("I")[0];
   logo.style["color"] = "#fff";
-  console.log("out");
 }
 
 /* Toggle Hamburger Menu */
@@ -48,7 +45,7 @@ layerSelect.addEventListener("click", toggleLayers);
 var menu = document.getElementById('menu');
 menu.addEventListener("click", toggleMenu);
 
-/* Listener for links in hamburger menu */
+/* Color Change Listener for links in hamburger menu */
 var hamburgerMenu = document.getElementById('hamburger-menu');
 for (var i = 0; i < hamburgerMenu.getElementsByTagName("A").length; i++) {
   hamburgerMenu.getElementsByTagName("a")[i].addEventListener("mouseover", colorOn);

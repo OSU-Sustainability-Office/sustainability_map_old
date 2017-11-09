@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
     <title>Oregon State University Sustainability Map</title>
 
     <!-- Include Favicon -->
@@ -18,6 +19,7 @@
 
     <!-- Include Javascript, and defer until HTML document is fully loaded. -->
     <script src="js/map.js" defer></script>
+    <script src"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js" defer></script>
   </head>
   <body>
     <div id="content">
@@ -34,18 +36,21 @@
       </header>
       <main>
         <div id="map">
-          <iframe src="https://www.google.com/maps/d/u/2/embed?mid=16NHgP2YkllF5W27J2gDucLp97hU" width="100%" height="100%"></iframe>
+          <!--<iframe src="https://www.google.com/maps/d/u/2/embed?mid=16NHgP2YkllF5W27J2gDucLp97hU" width="100%" height="100%"></iframe>-->
         </div>
+        <!-- Google Maps Scripts -->
+        <script src="js/googlemaps.js" defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5uoRD2wXTlKGxgZD3ey7Kbv0w6hnse1w&callback=initMap" async defer></script>
       </main>
     </div>
     <div id="layer-select-container">
       <div id="layer-select" class="hidden">
         Layers:<br />
         <!-- Javascript will populate this with checkboxes. The ones placed below are for demo purposes only. -->
-        <input type="checkbox" value="layer">Sustainability Tour</br />
-        <input type="checkbox" value="layer">Bottle Refill Stations</br />
-        <input type="checkbox" value="layer">Eco2Go Return Stations</br />
-        <input type="checkbox" value="layer">Food</br />
+        <span class="layer-choice"><img src="img/plate.tif" class="layer-img">Bottle Refill Stations</span></br />
+        <span class="layer-choice"><img src="img/plate.tif" class="layer-img">Eco2Go Return Stations</span></br />
+        <span class="layer-choice"><img src="img/plate.tif" class="layer-img">Food</span></br />
+        <span class="layer-choice"><img src="img/plate.tif" class="layer-img">Sustainability Tour</span></br />
       </div>
       <div id="layer-select-button">
         <i class="fa fa-arrow-right" aria-hidden="true"></i>
