@@ -86,6 +86,10 @@ main {
   padding: 1em;
   box-shadow: 3px 3px 3px #888888;
 }
+#layer-select I{
+  font-size: 2em;
+  padding: 5px;
+}
 #layer-select-button {
   width: 1.5em;
   height: 1.5em;

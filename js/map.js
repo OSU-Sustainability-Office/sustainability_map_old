@@ -32,6 +32,17 @@ var colorOff = function colorOff(event) {
   logo.style["color"] = "#fff";
 }
 
+/* Toggle orange logos in layer select menu */
+var svgColorOn = function svgColorOn(event) {
+  var current = event.currentTarget.getElementsByTagName("I")[0];
+  current.setAttribute("data-prev-color", current.style["color"]);
+  current.style["color"] = "#DC4405";
+}
+var svgColorOff = function svgColorOff(event) {
+  var current = event.currentTarget.getElementsByTagName("I")[0];
+  current.style["color"] = current.getAttribute("data-prev-color");
+}
+
 /* Toggle Hamburger Menu */
 var toggleMenu = function toggleMenu(event) {
   toggleHidden(document.getElementById('hamburger-menu'));
@@ -50,4 +61,11 @@ var hamburgerMenu = document.getElementById('hamburger-menu');
 for (var i = 0; i < hamburgerMenu.getElementsByTagName("A").length; i++) {
   hamburgerMenu.getElementsByTagName("a")[i].addEventListener("mouseover", colorOn);
   hamburgerMenu.getElementsByTagName("a")[i].addEventListener("mouseout", colorOff);
+}
+
+/* Color Change Listener for layer-select links */
+var layerSelect = document.getElementsByClassName("layer-choice");
+for (var i = 0; i < layerSelect.length; i++) {
+  layerSelect[i].addEventListener("mouseover", svgColorOn);
+  layerSelect[i].addEventListener("mouseout", svgColorOff);
 }
