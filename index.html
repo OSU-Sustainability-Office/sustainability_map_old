@@ -13,6 +13,7 @@
 
     <!-- Include CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="fonts/styles.css" rel="stylesheet">
 
     <!-- Include Font Awesome icons: http://fontawesome.io/ -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
@@ -25,7 +26,7 @@
     <div id="content">
       <header>
         <div id="map-logo">
-            <i class="fa fa-map-o" aria-hidden="true"></i>
+            <img src="img/map.svg" height="100">
         </div>
         <div id="header-text">
           <h2>Oregon State University</h2><h1>Sustainability Map</h1>
@@ -45,21 +46,28 @@
     </div>
     <div id="layer-select-container">
       <div id="layer-select" class="hidden">
-        <!-- Javascript will populate this with checkboxes. The ones placed below are for demo purposes only. -->
-        <span class="layer-choice"><i class="fa fa-tint" aria-hidden="true" data-prev-color="#006064" style="color: #006064;"></i>Bottle Refill Stations</span></br />
-        <span class="layer-choice"><i class="fa fa-archive" aria-hidden="true" data-prev-color="#F57C00" style="color: #F57C00;"></i>Eco2Go Return Stations</span></br />
-        <span class="layer-choice"><i class="fa fa-cutlery" aria-hidden="true" data-prev-color="#7CB341" style="color: #7CB341;"></i>Food</span></br />
-        <span class="layer-choice"><i class="fa fa-blind" aria-hidden="true" data-prev-color="#673AB7" style="color: #673AB7;"></i>Sustainability Tour</span></br />
+        <div id="layer-select-icons">
+          <div class="icon"><img src="img/bottle.svg" height="60"></div>
+          <div class="icon"><img src="img/eco2go.svg" height="60"></div>
+          <div class="icon"><img src="img/map.svg" height="60"></div>
+          <div class="icon"><img src="img/map.svg" height="60"></div>
+        </div>
+        <div id="layer-select-text">
+          <div class="layer-choice">Bottle Refill Stations</div>
+          <div class="layer-choice">Eco2Go Return Stations</div>
+          <div class="layer-choice">Food</div>
+          <div class="layer-choice">Sustainability Tour</div>
+        </div>
       </div>
       <div id="layer-select-button">
         <i class="fa fa-arrow-right" aria-hidden="true"></i>
       </div>
     </div>
     <div id="hamburger-menu" class="hidden">
-      <a href="http://fa.oregonstate.edu/sustainability"><i class="fa fa-envira" aria-hidden="true"></i>  Sustainability Office</a></br />
-      <a href="http://fa.oregonstate.edu/sustainability"><i class="fa fa-facebook" aria-hidden="true"></i>  Facebook Page</a></br />
-      <a href="http://fa.oregonstate.edu/sustainability"><i class="fa fa-instagram" aria-hidden="true"></i>  Instagram</a></br />
-      <a href="http://fa.oregonstate.edu/sustainability"><i class="fa fa-twitter" aria-hidden="true"></i>  Twitter</a></br />
+      <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-envira" aria-hidden="true"></i></div><div class="menu-text">Sustainability Office</div></a><br />
+      <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-facebook" aria-hidden="true"></i></div><div class="menu-text">Facebook Page</div></a><br />
+      <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-instagram" aria-hidden="true"></i></div><div class="menu-text">Instagram</div></a><br />
+      <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div><div class="menu-text">Twitter</div></a><br />
     </div>
   </body>
 </html>

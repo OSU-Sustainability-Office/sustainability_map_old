@@ -27,7 +27,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(bottle, 'click', markerClick));
 
   // Eco2Go
   eco = new google.maps.KmlLayer(src + "eco2Go.kmz", {
@@ -35,7 +34,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(eco, 'click', markerClick));
 
   // Gluten Free
   gluten = new google.maps.KmlLayer(src + "glutenFree.kmz", {
@@ -43,7 +41,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(gluten, 'click', markerClick));
 
   // Halal
   halal = new google.maps.KmlLayer(src + "halal.kmz", {
@@ -51,7 +48,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(halal, 'click', markerClick));
 
   // Local
   local = new google.maps.KmlLayer(src + "local.kmz", {
@@ -59,7 +55,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(local, 'click', markerClick));
 
   // Make Cents
   makeCents = new google.maps.KmlLayer(src + "makeCents.kmz", {
@@ -67,7 +62,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(makeCents, 'click', markerClick));
 
   // Restaurants
   restaurants = new google.maps.KmlLayer(src + "restaurants.kmz", {
@@ -75,7 +69,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(restaurants, 'click', markerClick));
 
   // OSU Sustainability Tour
   susTour = new google.maps.KmlLayer(src + "susTour.kmz", {
@@ -83,7 +76,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(susTour, 'click', markerClick));
 
   // Vegan
   vegan = new google.maps.KmlLayer(src + "vegan.kmz", {
@@ -91,7 +83,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(vegan, 'click', markerClick));
 
   // Vegetarian
   vegetarian = new google.maps.KmlLayer(src + "vegetarian.kmz", {
@@ -99,7 +90,6 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
-  google.maps.event.addListener(vegetarian, 'click', markerClick));
 }
 
 /*
