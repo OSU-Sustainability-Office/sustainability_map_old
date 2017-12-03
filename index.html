@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
 
     <!-- Include Javascript, and defer until HTML document is fully loaded. -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" defer></script>
     <script src="js/map.js" defer></script>
+    <script src="js/svg.js" defer></script>
     <script src"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js" defer></script>
   </head>
   <body>
@@ -40,23 +42,23 @@
           <!--<iframe src="https://www.google.com/maps/d/u/2/embed?mid=16NHgP2YkllF5W27J2gDucLp97hU" width="100%" height="100%"></iframe>-->
         </div>
         <!-- Google Maps Scripts -->
-        <script src="js/googlemaps.js" defer></script>
+        <script src="js/googlemaps.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5uoRD2wXTlKGxgZD3ey7Kbv0w6hnse1w&callback=initMap" async defer></script>
       </main>
     </div>
     <div id="layer-select-container">
       <div id="layer-select" class="hidden">
         <div id="layer-select-icons">
-          <div class="icon"><img src="img/bottle.svg" height="60"></div>
-          <div class="icon"><img src="img/eco2go.svg" height="60"></div>
-          <div class="icon"><img src="img/map.svg" height="60"></div>
-          <div class="icon"><img src="img/map.svg" height="60"></div>
+          <div class="icon" id="bottle" data-neutral-color="ffffff" data-type="bottle"></div>
+          <div class="icon" id="eco2go" data-neutral-color="ffffff" data-type="eco2go"></div>
+          <div class="icon" id="food" data-neutral-color="ffffff" data-type="food"></div>
+          <div class="icon" id="tour" data-neutral-color="ffffff" data-type="tour"></div>
         </div>
         <div id="layer-select-text">
-          <div class="layer-choice">Bottle Refill Stations</div>
-          <div class="layer-choice">Eco2Go Return Stations</div>
-          <div class="layer-choice">Food</div>
-          <div class="layer-choice">Sustainability Tour</div>
+          <div class="layer-choice" data-type="bottle" data-neutral-color="ffffff">Bottle Refill Stations</div>
+          <div class="layer-choice" data-type="eco2go" data-neutral-color="ffffff">Eco2Go Return Stations</div>
+          <div class="layer-choice" data-type="food" data-neutral-color="ffffff">Food</div>
+          <div class="layer-choice" data-type="tour" data-neutral-color="ffffff">Sustainability Tour</div>
         </div>
       </div>
       <div id="layer-select-button">

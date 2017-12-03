@@ -108,47 +108,46 @@ susTour.addListener("click", kmlClick);
 vegan.addListener("click", kmlClick);
 vegetarian.addListener("click", kmlClick);*/
 
-// Toggles the color associated with a particular layer-select
-function toggleColor(element, color) {
-  if (element.getAttribute("data-prev-color") == color) {
-    element.style["color"] = "#fff";
-    element.setAttribute("data-prev-color", "#fff");
-  } else {
-    element.style["color"] = color;
-    element.setAttribute("data-prev-color", color);
-  }
-}
 // Toggles individual layers on the Google Map
 function toggleLayer(layers) {
-  console.log("toggle");
   for (var i = 0; i < layers.length; i++) {
     layers[i].setMap(layers[i].getMap() ? null : map);
   }
 }
+
+// Toggles the neutral color of the associated icon, and changes its color.
 var layerCallback = function(e) {
-  console.log(e.currentTarget.textContent);
-  switch (e.currentTarget.textContent) {
-    case 'Bottle Refill Stations':
+  var type = e.currentTarget.getAttribute("data-type");
+  switch (type) {
+    case 'bpottle':
       toggleLayer([bottle]);
-      toggleColor(e.currentTarget.getElementsByTagName("I")[0], "rgb(0, 96, 100)");
+      current.getAttribute("data-neutral-color") = "006064";
+      updateSVG(type, "DC4405", "006064");
       break;
-    case 'Eco2Go Return Stations':
+    case 'eco2go':
       toggleLayer([eco]);
-      toggleColor(e.currentTarget.getElementsByTagName("I")[0], "rgb(245, 124, 0)");
+      current.getAttribute("data-neutral-color") = "f57c00";
+      updateSVG(type, "DC4405", "f57c00");
       break;
-    case 'Food':
+    case 'food':
       toggleLayer([gluten, halal, local, makeCents, restaurants, vegan, vegetarian]);
-      toggleColor(e.currentTarget.getElementsByTagName("I")[0], "rgb(124, 179, 65)");
+      current.getAttribute("data-neutral-color") = "7cb341";
+      updateSVG(type, "DC4405", "7cb341");
       break;
-    case 'Sustainability Tour':
+    case 'tour':
       toggleLayer([susTour]);
-      toggleColor(e.currentTarget.getElementsByTagName("I")[0], "rgb(103, 58, 183)");
+      current.getAttribute("data-neutral-color") = "673ab7";
+      updateSVG(type, "DC4405", "673ab7");
       break;
-    console.log("end");
   }
 }
+
 // Event listeners for toggling layers
-var layerChoices = document.getElementsByClassName("layer-choice");
+var layerChoices = document.getElementsByClassName("layer-choice")
+var otherChoices = document.getElementsByClassName("icon");
 for (var i = 0; i < layerChoices.length; i++) {
   layerChoices[i].addEventListener("click", layerCallback);
+}
+for (var i = 0; i < otherChoices.length; i++) {
+  otherChoices[i].addEventListener("click", layerCallback);
 }
