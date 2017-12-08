@@ -14,10 +14,10 @@ function downloadSVG(url) {
            case "http://carbon.campusops.oregonstate.edu/map/img/eco2go.svg":
             icons[1].innerHTML = this.responseText;
             break;
-           case "http://carbon.campusops.oregonstate.edu/map/img/map.svg":
+           case "http://carbon.campusops.oregonstate.edu/map/img/plate.svg":
             icons[2].innerHTML = this.responseText;
             break;
-           case "http://carbon.campusops.oregonstate.edu/map/img/map2.svg":
+           case "http://carbon.campusops.oregonstate.edu/map/img/bike.svg":
             icons[3].innerHTML = this.responseText;
             break;
          }
@@ -30,25 +30,28 @@ function downloadSVG(url) {
 // Initialize SVG images with correct innerHTML
 downloadSVG("bottle");
 downloadSVG("eco2go");
-downloadSVG("map");
-downloadSVG("map2");
+downloadSVG("plate");
+downloadSVG("bike");
 
 /* Toggle orange logos in layer select menu */
 var svgColorOn = function svgColorOn(event) {
+  // Hover the cursor.
+  event.currentTarget.style['cursor'] = "pointer";
   // Choose the icon and change the stroke color
+  var color = document.getElementById(event.currentTarget.getAttribute("data-type")).getAttribute("data-neutral-color");
   var current = $("#"+event.currentTarget.getAttribute("data-type")).first();
-  console.log(current);
-  var current = current.children().children()[0];
-  console.log(current.innerHTML);
-  current.innerHTML = current.innerHTML.split(event.currentTarget.getAttribute("data-neutral-color")).join("DC4405");
-  console.log(current.innerHTML);
+  current = current.children().children()[0];
+  current.innerHTML = current.innerHTML.split(color).join("DC4405");
 };
 
 var svgColorOff = function svgColorOff(event) {
+  // Un- hover the cursor.
+  event.currentTarget.style['cursor'] = "auto";
   // Choose the icon and change the stroke color
+    var color = document.getElementById(event.currentTarget.getAttribute("data-type")).getAttribute("data-neutral-color");
   var current = $("#"+event.currentTarget.getAttribute("data-type")).first();
-  var current = current.children().children()[0];
-  current.innerHTML = current.innerHTML.split("DC4405").join(event.currentTarget.getAttribute("data-neutral-color"));
+  current = current.children().children()[0];
+  current.innerHTML = current.innerHTML.split("DC4405").join(color);
 };
 
 /* Color Change Listener for layer-select links */

@@ -110,34 +110,31 @@ vegetarian.addListener("click", kmlClick);*/
 
 // Toggles individual layers on the Google Map
 function toggleLayer(layers) {
-  for (var i = 0; i < layers.length; i++) {
+  /*for (var i = 0; i < layers.length; i++) {
     layers[i].setMap(layers[i].getMap() ? null : map);
-  }
+  }*/
 }
 
 // Toggles the neutral color of the associated icon, and changes its color.
 var layerCallback = function(e) {
   var type = e.currentTarget.getAttribute("data-type");
+  var current = document.getElementById(type);
   switch (type) {
-    case 'bpottle':
+    case 'bottle':
       toggleLayer([bottle]);
-      current.getAttribute("data-neutral-color") = "006064";
-      updateSVG(type, "DC4405", "006064");
+      current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "006064") : current.setAttribute("data-neutral-color", "ffffff");
       break;
     case 'eco2go':
       toggleLayer([eco]);
-      current.getAttribute("data-neutral-color") = "f57c00";
-      updateSVG(type, "DC4405", "f57c00");
+      current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "f57c00") : current.setAttribute("data-neutral-color", "ffffff");
       break;
     case 'food':
       toggleLayer([gluten, halal, local, makeCents, restaurants, vegan, vegetarian]);
-      current.getAttribute("data-neutral-color") = "7cb341";
-      updateSVG(type, "DC4405", "7cb341");
+      current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "7cb341") : current.setAttribute("data-neutral-color", "ffffff");
       break;
     case 'tour':
       toggleLayer([susTour]);
-      current.getAttribute("data-neutral-color") = "673ab7";
-      updateSVG(type, "DC4405", "673ab7");
+      current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "673ab7") : current.setAttribute("data-neutral-color", "ffffff");
       break;
   }
 }
