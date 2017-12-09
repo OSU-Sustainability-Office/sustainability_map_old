@@ -1,3 +1,11 @@
+/* Toggle "hidden" class for current element */
+function toggleHidden(currentElement) {
+  if (currentElement.classList.contains("hidden")) {
+    //currentElement.classList.remove("hidden");
+  } else {
+    //currentElement.classList.add("hidden");
+  }
+}
 
 
 /* Toggle Layer Selection Window */
