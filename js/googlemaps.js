@@ -110,9 +110,10 @@ vegetarian.addListener("click", kmlClick);*/
 
 // Toggles individual layers on the Google Map
 function toggleLayer(layers) {
-  /*for (var i = 0; i < layers.length; i++) {
+  console.log("TEST");
+  for (var i = 0; i < layers.length; i++) {
     layers[i].setMap(layers[i].getMap() ? null : map);
-  }*/
+  }
 }
 
 // Toggles the neutral color of the associated icon, and changes its color.

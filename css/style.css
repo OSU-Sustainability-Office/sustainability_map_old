@@ -1,4 +1,14 @@
- body, html {
+/* Layer choice animation. */
+@keyframes layer-select {
+    from {margin-left: -300px;}
+    to {margin-left: 0px;}
+}
+/* Layer choice animation. */
+@keyframes layer-select-reverse {
+    from {margin-left: 0px;}
+    to {margin-left: -300px;}
+}
+body, html {
      margin:0;
      padding:0;
      height: 100%;
@@ -52,6 +62,18 @@ main {
   padding-top: 20px;
   margin: 0px;
   height: 40px;
+}
+.layer-select-animation {
+  /* Temporary storage for animation code. */
+  animation-name: layer-select;
+  animation-duration: .5s;
+  margin-left: 0px;
+}
+.layer-select-animation-reverse {
+  /* Temporary storage for animation code. */
+  animation-name: layer-select-reverse;
+  animation-duration: .5s;
+  margin-left: -300px;
 }
 .menu-icon {
   float: left;
@@ -108,7 +130,6 @@ main {
 #layer-select-button {
   width: 1.5em;
   height: 1.5em;
-  top: 50%;
   background-color: #000;
   color: #fff;
   font-size: 3em;
@@ -117,13 +138,14 @@ main {
   box-shadow: 3px 3px 3px #888888;
   margin-left: 0.3em;
   padding: 0em;
+  margin-top: 110px;
 }
 #layer-select-button:hover {
   color: #DC4405;
 }
 #layer-select-container {
   position: fixed;
-  top: 50%;
+  top: 40%;
   display: inline-flex;
 }
 #map {

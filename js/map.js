@@ -1,25 +1,20 @@
 
-/* Toggle "hidden" class for current element */
-function toggleHidden(currentElement) {
-  if (currentElement.classList.contains("hidden")) {
-    currentElement.classList.remove("hidden");
-  } else {
-    currentElement.classList.add("hidden");
-  }
-}
-
 
 /* Toggle Layer Selection Window */
 var toggleLayers = function toggleLayers(event) {
   var arrowNode = event.currentTarget.getElementsByClassName("fa")[0];
+  var layerSelect = document.getElementById("layer-select");
   if (arrowNode.classList.contains("fa-arrow-right")) {
+    layerSelect.classList.add("layer-select-animation");
+    layerSelect.classList.remove("layer-select-animation-reverse");
     arrowNode.classList.remove("fa-arrow-right");
     arrowNode.classList.add("fa-arrow-left");
   } else {
+    layerSelect.classList.add("layer-select-animation-reverse");
+    layerSelect.classList.remove("layer-select-animation");
     arrowNode.classList.remove("fa-arrow-left");
     arrowNode.classList.add("fa-arrow-right");
   }
-  toggleHidden(document.getElementById("layer-select"));
 }
 
 /* Toggle orange logos in hamburger menu */
