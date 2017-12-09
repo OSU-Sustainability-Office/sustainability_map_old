@@ -110,7 +110,6 @@ vegetarian.addListener("click", kmlClick);*/
 
 // Toggles individual layers on the Google Map
 function toggleLayer(layers) {
-  console.log("TEST");
   for (var i = 0; i < layers.length; i++) {
     layers[i].setMap(layers[i].getMap() ? null : map);
   }
