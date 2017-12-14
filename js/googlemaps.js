@@ -10,13 +10,47 @@ var susTour;
 var vegan;
 var vegetarian;
 
+// Get mouse X and Y
+var mx;
+var my;
+// Add mouse event listerner.
+document.getElementsByTagName("body")[0].addEventListener("mousemove", function(mouseEvent) {
+  mx = mouseEvent.clientX;
+  my = mouseEvent.clientY;
+});
+
+// Toggles modal with specific layer info.
+var togglePopup = function togglePopup(kmlEvent) {
+  console.log(kmlEvent);
+  var modal = document.getElementById("map-popup-container");
+  modal.classList.add("fadeIn");
+  modal.classList.remove("slideDown");
+  modal.innerHTML = kmlEvent.featureData.infoWindowHtml;
+  modal.style.bottom = "";
+  modal.style.top = my;
+  modal.style.left = mx;
+  modal.style.width = "250px";
+};
+
 // Initialize Google Maps API
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 44.563781, lng: -123.283},
-    zoom: 16
+    zoom: 16,
+    disableDefaultUI: true
   });
+
+  // Disables info windows.
+  map.addListener('click', function (event) {
+  // If the event is a POI
+  if (event.placeId) {
+    // Call event.stop() on the event to prevent the default info window from showing.
+    event.stop();
+    // do any other stuff you want to do
+    console.log(event);
+  }
+});
 
   // Add & remove layers.
   var src = 'http://carbon.campusops.oregonstate.edu/map/map_data/';
@@ -27,6 +61,7 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  bottle.addListener('click', togglePopup);
 
   // Eco2Go
   eco = new google.maps.KmlLayer(src + "eco2Go.kmz", {
@@ -34,6 +69,7 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  eco.addListener('click', togglePopup);
 
   // Gluten Free
   gluten = new google.maps.KmlLayer(src + "glutenFree.kmz", {
@@ -41,6 +77,7 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  gluten.addListener('click', togglePopup);
 
   // Halal
   halal = new google.maps.KmlLayer(src + "halal.kmz", {
@@ -48,6 +85,7 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  halal.addListener('click', togglePopup);
 
   // Local
   local = new google.maps.KmlLayer(src + "local.kmz", {
@@ -55,6 +93,7 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  local.addListener('click', togglePopup);
 
   // Make Cents
   makeCents = new google.maps.KmlLayer(src + "makeCents.kmz", {
@@ -62,6 +101,7 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  makeCents.addListener('click', togglePopup);
 
   // Restaurants
   restaurants = new google.maps.KmlLayer(src + "restaurants.kmz", {
@@ -69,6 +109,7 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  restaurants.addListener('click', togglePopup);
 
   // OSU Sustainability Tour
   susTour = new google.maps.KmlLayer(src + "susTour.kmz", {
@@ -76,6 +117,7 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  susTour.addListener('click', togglePopup);
 
   // Vegan
   vegan = new google.maps.KmlLayer(src + "vegan.kmz", {
@@ -83,6 +125,7 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  vegan.addListener('click', togglePopup);
 
   // Vegetarian
   vegetarian = new google.maps.KmlLayer(src + "vegetarian.kmz", {
@@ -90,23 +133,8 @@ function initMap() {
     preserveViewport: true,
     map: map
   });
+  vegetarian.addListener('click', togglePopup);
 }
-
-/*
-//KML Mouse Event is passed in.
-var kmlClick = function(me) {
-  console.log(me.KMLFeatureData);
-}
-bottle.addListener("click", kmlClick);
-eco.addListener("click", kmlClick);
-gluten.addListener("click", kmlClick);
-halal.addListener("click", kmlClick);
-local.addListener("click", kmlClick);
-makeCents.addListener("click", kmlClick);
-restaurants.addListener("click", kmlClick);
-susTour.addListener("click", kmlClick);
-vegan.addListener("click", kmlClick);
-vegetarian.addListener("click", kmlClick);*/
 
 // Toggles individual layers on the Google Map
 function toggleLayer(layers) {

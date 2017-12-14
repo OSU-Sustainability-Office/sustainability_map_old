@@ -8,6 +8,11 @@
     from {margin-left: 0px;}
     to {margin-left: -300px;}
 }
+/* Exit animation for initial hint bar */
+@keyframes slideDown {
+    from {height: 3em;}
+    to {height: 0em;}
+}
 body, html {
      margin:0;
      padding:0;
@@ -64,13 +69,11 @@ main {
   height: 40px;
 }
 .layer-select-animation {
-  /* Temporary storage for animation code. */
   animation-name: layer-select;
   animation-duration: .5s;
   margin-left: 0px;
 }
 .layer-select-animation-reverse {
-  /* Temporary storage for animation code. */
   animation-name: layer-select-reverse;
   animation-duration: .5s;
   margin-left: -300px;
@@ -83,6 +86,10 @@ main {
 .menu-text {
   float: left;
   padding-left: 1em;
+}
+.slideDown {
+  animation-name: slideDown;
+  animation-duration: .5s;
 }
 #content {
   display: flex;
@@ -147,6 +154,22 @@ main {
   position: fixed;
   top: 40%;
   display: inline-flex;
+}
+#map-popup-container {
+  position: absolute;
+  text-align: center;
+  bottom: 0px;
+  width: 100%;
+}
+#map-popup {
+  display: inline-box;
+  background-color: #000;
+  color: #fff;
+  margin: 0px auto;
+  bottom: 0px;
+  font-size: 1em;
+  padding: 1em;
+  box-shadow: 3px 3px 3px #888888;
 }
 #map {
   height: 100%;
