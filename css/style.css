@@ -151,9 +151,15 @@ main {
   color: #DC4405;
 }
 #layer-select-container {
-  position: fixed;
-  top: 40%;
+  margin: auto;
   display: inline-flex;
+}
+#layer-select-flex {
+  position: fixed;
+  top: 0px;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
 }
 #map-popup-container {
   position: absolute;
