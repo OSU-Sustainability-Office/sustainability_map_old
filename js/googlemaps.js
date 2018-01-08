@@ -10,6 +10,9 @@ var susTour;
 var vegan;
 var vegetarian;
 
+// Variable that contains the most recently opened InfoWindow
+var infoWindow;
+
 // Get mouse X and Y
 var mx;
 var my;
@@ -19,22 +22,29 @@ document.getElementsByTagName("body")[0].addEventListener("mousemove", function(
   my = mouseEvent.clientY;
 });
 
-// Toggles modal with specific layer info.
+// Toggles info windows
 var togglePopup = function togglePopup(kmlEvent) {
-  console.log(kmlEvent);
-  var modal = document.getElementById("map-popup-container");
-  modal.classList.add("fadeIn");
-  modal.classList.remove("slideDown");
-  modal.innerHTML = kmlEvent.featureData.infoWindowHtml;
-  modal.style.bottom = "";
-  modal.style.top = my;
-  modal.style.left = mx;
-  modal.style.width = "250px";
+
+  console.log(kmlEvent); // For debugging purposes.
+
+  infoWindow.close(); // Closes the previously-opened infoWindow
+
+  // Initializes a new infowindow for the clicked element.
+  infoWindow = new google.maps.InfoWindow({
+    content: kmlEvent.featureData.infoWindowHtml,
+    //maxWidth: "500px",
+    position: kmlEvent.latLng
+  });
+
+  infoWindow.open(map); // Open the infoWindow!
+
 };
 
 // Initialize Google Maps API
 var map;
 function initMap() {
+  infoWindow = new google.maps.InfoWindow({content: "Empty."}); // Initialize an empty infoWindow.
+  // Initialize the map.
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 44.563781, lng: -123.283},
     zoom: 16,
@@ -47,7 +57,6 @@ function initMap() {
   if (event.placeId) {
     // Call event.stop() on the event to prevent the default info window from showing.
     event.stop();
-    // do any other stuff you want to do
     console.log(event);
   }
 });

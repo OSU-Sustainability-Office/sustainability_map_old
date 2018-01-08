@@ -8,11 +8,6 @@
     from {margin-left: 0px;}
     to {margin-left: -300px;}
 }
-/* Exit animation for initial hint bar */
-@keyframes slideDown {
-    from {height: 3em;}
-    to {height: 0em;}
-}
 body, html {
      margin:0;
      padding:0;
@@ -87,10 +82,6 @@ main {
   float: left;
   padding-left: 1em;
 }
-.slideDown {
-  animation-name: slideDown;
-  animation-duration: .5s;
-}
 #content {
   display: flex;
   flex-flow: column;
@@ -161,21 +152,19 @@ main {
   display: flex;
   flex-direction: column;
 }
-#map-popup-container {
-  position: absolute;
-  text-align: center;
-  bottom: 0px;
-  width: 100%;
-}
 #map-popup {
-  display: inline-box;
+  position: absolute;
   background-color: #000;
   color: #fff;
   margin: 0px auto;
-  bottom: 0px;
   font-size: 1em;
   padding: 1em;
   box-shadow: 3px 3px 3px #888888;
+  width: 16em;
+  min-height: 4em;
+  overflow-y: auto;
+  text-align: center;
+  top: 90%;
 }
 #map {
   height: 100%;
