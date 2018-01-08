@@ -38,6 +38,10 @@ var togglePopup = function togglePopup(kmlEvent) {
 
   infoWindow.open(map); // Open the infoWindow!
 
+  // Hide hint modal
+  var modal = document.getElementById("map-popup");
+  modal.classList.add("hidden"); 
+
 };
 
 // Initialize Google Maps API
