@@ -32,7 +32,7 @@ var togglePopup = function togglePopup(kmlEvent) {
   // Initializes a new infowindow for the clicked element.
   infoWindow = new google.maps.InfoWindow({
     content: kmlEvent.featureData.infoWindowHtml,
-    //maxWidth: "500px",
+    maxWidth: "300",
     position: kmlEvent.latLng
   });
 
@@ -40,7 +40,7 @@ var togglePopup = function togglePopup(kmlEvent) {
 
   // Hide hint modal
   var modal = document.getElementById("map-popup");
-  modal.classList.add("hidden"); 
+  modal.classList.add("hidden");
 
 };
 
@@ -55,7 +55,7 @@ function initMap() {
     disableDefaultUI: true
   });
 
-  // Disables info windows.
+  // Disables info windows for default buildings and allows users to "click out" of infoWindows
   map.addListener('click', function (event) {
   // If the event is a POI
   if (event.placeId) {
@@ -63,6 +63,7 @@ function initMap() {
     event.stop();
     console.log(event);
   }
+  infoWindow.close(); // Close any open infoWindows
 });
 
   // Add & remove layers.
@@ -77,7 +78,7 @@ function initMap() {
   bottle.addListener('click', togglePopup);
 
   // Eco2Go
-  eco = new google.maps.KmlLayer(src + "eco2Go.kmz", {
+  eco = new google.maps.KmlLayer(src + "eco.kmz", {
     suppressInfoWindows: true,
     preserveViewport: true,
     map: map
