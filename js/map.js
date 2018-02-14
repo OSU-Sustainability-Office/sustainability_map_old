@@ -60,15 +60,17 @@ function getIcons(imagesDOM) {
   var icons = {};
   for (var i = 0; i < imagesDOM.length; i++) {
     icons[i] = { // The location in the list is used as a type.
-      icon: imagesDOM[i].childNodes[0].getAttribute("src"),
-      scaledSize: new google.maps.Size(25, 25), // scaled size
+      icon: {
+        url: imagesDOM[i].childNodes[0].getAttribute("src"),
+        scaledSize: new google.maps.Size(75, 75)
+      }, // scaled size
     };
   }
   return icons;
 }
 
 /* Sends a get request and returns the request body. */
-function sendGETRequest(url) {
+function sendGETRequest(url, callback) {
   // Send GET request
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("GET", "http://carbon.campusops.oregonstate.edu/map/php/getRequest.php?url="+url, false); // false for synchronous request
