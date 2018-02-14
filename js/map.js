@@ -59,7 +59,10 @@ for (var i = 0; i < hamburgerMenu.getElementsByTagName("A").length; i++) {
 function getIcons(imagesDOM) {
   var icons = {};
   for (var i = 0; i < imagesDOM.length; i++) {
-    icons[i] = {icon: imagesDOM[i].childNodes[0].getAttribute("src")}; // The location in the list is used as a type.
+    icons[i] = { // The location in the list is used as a type.
+      icon: imagesDOM[i].childNodes[0].getAttribute("src"),
+      scaledSize: new google.maps.Size(25, 25), // scaled size
+    };
   }
   return icons;
 }
@@ -68,34 +71,46 @@ function getIcons(imagesDOM) {
 function sendGETRequest(url) {
   // Send GET request
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("GET", url, false); // false for synchronous request
+  xmlHttp.open("GET", "http://carbon.campusops.oregonstate.edu/map/php/getRequest.php?url="+url, false); // false for synchronous request
   xmlHttp.send(null);
-  var res = xmlHttp.responseText;
-
+  return xmlHttp.responseText;
 }
 
 /* Downloads image location data and returns it in a JS object. */
-function getMediaInformation() {
+function getMediaInformation(imagesDOM) {
   var media = [];
   for (var i = 0; i < imagesDOM.length; i++) {
 
+    // Get media ID
+    var url = "https://api.instagram.com/oembed/?callback=&url=" + imagesDOM[i].getAttribute("href");
+    url = encodeURIComponent(url);
+    var res = sendGETRequest(url)
+    res = JSON.parse(res);
+    var id = res.media_id;
+
     // This request retrieves Instagram's location id for the image.
-    var url = "../php/getRequest.php?url=https://api.instagram.com/v1/media/{media-id}?access_token=2105844702.1677ed0.9f9c0b0dc6fa4aedbd0c75cc50f4610d";
-    var res = sendGETRequest(url);
+    url = "https://api.instagram.com/v1/media/" + id + "?access_token=2105844702.1677ed0.9f9c0b0dc6fa4aedbd0c75cc50f4610d";
+    url = encodeURIComponent(url);
+    res = sendGETRequest(url);
 
     // Parse JSON response for location data.
     res = JSON.parse(res);
     var loc = res.data.location; // Save Instagram location ID
-
-    // Now, retrieve geospatial data for the image.
-    url = "https://api.instagram.com/v1/locations/{location-id}?access_token=2105844702.1677ed0.9f9c0b0dc6fa4aedbd0c75cc50f4610d";
-    res = JSON.parse(sendGETRequest(url)); // Parse JSON
-
-    // Build location data object and add to array.
-    // The structure of this object is dictated by Google Maps API.
-    media[i] = {
-      position: new google.maps.LatLng(res.data.latitude, res.data.longitude),
-      type: i // The location in the list is used as a type.
+    if (loc == null) {
+      // Build location data object and add to array.
+      // The structure of this object is dictated by Google Maps API.
+      media[i] = {
+        position: new google.maps.LatLng(44.557407, -123.285870), // Oak Creek Building's location
+        type: i // The location in the list is used as a type.
+      }
+    } else {
+      // Build location data object and add to array.
+      // The structure of this object is dictated by Google Maps API.
+      media[i] = {
+        position: new google.maps.LatLng(loc.latitude, loc.longitude),
+        type: i, // The location in the list is used as a type.
+        url: imagesDOM[i].getAttribute("href") // Link to the instagram post
+      }
     }
   }
 
@@ -105,7 +120,7 @@ function getMediaInformation() {
 /* Loads Instagram Layer */
 var loadImageLayer = function loadImageLayer() {
   // Loop through images and load their location data.
-  var imagesDOM = document.getElementById("photo-container").childNodes;
+  var imagesDOM = document.getElementsByClassName("photo-container")[0].childNodes;
   var icons = getIcons(imagesDOM);
   var media = getMediaInformation(imagesDOM);
 
@@ -121,6 +136,7 @@ var loadImageLayer = function loadImageLayer() {
       map: map
     });
   });
+}
 
 
 /* Downloads images from instagram and inserts them into the DOM. */
