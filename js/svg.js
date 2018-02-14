@@ -35,7 +35,7 @@ downloadSVG("bottle");
 downloadSVG("eco2go");
 downloadSVG("plate");
 downloadSVG("bike");
-downloadSVG("instagram_logo");
+downloadSVG("transportation");
 
 /* Toggle orange logos in layer select menu */
 var svgColorOn = function svgColorOn(event) {

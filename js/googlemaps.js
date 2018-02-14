@@ -7,6 +7,7 @@ var local;
 var makeCents;
 var restaurants;
 var susTour;
+var trans;
 var vegan;
 var vegetarian;
 
@@ -133,6 +134,14 @@ function initMap() {
   });
   susTour.addListener('click', togglePopup);
 
+  // OSU Sustainability Tour
+  trans = new google.maps.KmlLayer(src + "trans.kmz", {
+    suppressInfoWindows: true,
+    preserveViewport: true,
+    map: map
+  });
+  trans.addListener('click', togglePopup);
+
   // Vegan
   vegan = new google.maps.KmlLayer(src + "vegan.kmz", {
     suppressInfoWindows: true,
@@ -177,6 +186,10 @@ var layerCallback = function(e) {
     case 'tour':
       toggleLayer([susTour]);
       current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "673ab7") : current.setAttribute("data-neutral-color", "ffffff");
+      break;
+    case 'trans':
+      toggleLayer([trans]);
+      current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "FFB500") : current.setAttribute("data-neutral-color", "ffffff");
       break;
   }
 }
