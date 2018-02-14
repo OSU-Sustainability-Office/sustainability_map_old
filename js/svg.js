@@ -20,6 +20,9 @@ function downloadSVG(url) {
            case "http://carbon.campusops.oregonstate.edu/map/img/bike.svg":
             icons[3].innerHTML = this.responseText;
             break;
+          case "http://carbon.campusops.oregonstate.edu/map/img/instagram_logo.svg":
+           icons[4].innerHTML = this.responseText;
+           break;
          }
       }
   };
@@ -32,6 +35,7 @@ downloadSVG("bottle");
 downloadSVG("eco2go");
 downloadSVG("plate");
 downloadSVG("bike");
+downloadSVG("instagram_logo");
 
 /* Toggle orange logos in layer select menu */
 var svgColorOn = function svgColorOn(event) {

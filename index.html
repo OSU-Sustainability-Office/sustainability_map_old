@@ -19,10 +19,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
 
     <!-- Include Javascript, and defer until HTML document is fully loaded. -->
+    <script type="text/javascript" src="js/instafeed.min.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" defer></script>
-    <script src="js/map.js" defer></script>
     <script src="js/svg.js" defer></script>
     <script src"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js" defer></script>
+    <script src="js/map.js" defer></script>
   </head>
   <body>
     <div id="content">
@@ -51,12 +52,14 @@
             <div class="icon" id="eco2go" data-neutral-color="f57c00" data-type="eco2go"></div>
             <div class="icon" id="food" data-neutral-color="7cb341" data-type="food"></div>
             <div class="icon" id="tour" data-neutral-color="673ab7" data-type="tour"></div>
+            <div class="icon hidden" id="instagram" data-neutral-color="FFB500" data-type="instagram"></div>
           </div>
           <div id="layer-select-text">
             <div class="layer-choice" data-type="bottle" data-neutral-color="006064">Bottle Refill Stations</div>
             <div class="layer-choice" data-type="eco2go" data-neutral-color="f57c00">Eco2Go Return Stations</div>
             <div class="layer-choice" data-type="food" data-neutral-color="7cb341">Food</div>
             <div class="layer-choice" data-type="tour" data-neutral-color="673ab7">Sustainability Tour</div>
+            <div class="layer-choice hidden" data-type="instagram" data-neutral-color="673ab7">Instagram</div>
           </div>
         </div>
         <div id="layer-select-button">
@@ -73,6 +76,7 @@
       <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-instagram" aria-hidden="true"></i></div><div class="menu-text">Instagram</div></a><br />
       <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div><div class="menu-text">Twitter</div></a><br />
     </div>
+    <div id="photo-container" class="hidden"></div>
     <!-- Google Maps Scripts -->
     <script src="js/googlemaps.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5uoRD2wXTlKGxgZD3ey7Kbv0w6hnse1w&callback=initMap" async defer></script>

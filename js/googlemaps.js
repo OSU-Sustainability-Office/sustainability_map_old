@@ -190,3 +190,8 @@ for (var i = 0; i < layerChoices.length; i++) {
 for (var i = 0; i < otherChoices.length; i++) {
   otherChoices[i].addEventListener("click", layerCallback);
 }
+
+// Returns the current map object.
+function getMap() {
+  return map;
+}
