@@ -23,6 +23,9 @@ function downloadSVG(url) {
           case "http://carbon.campusops.oregonstate.edu/map/img/transportation.svg":
            icons[4].innerHTML = this.responseText;
            break;
+           case "http://carbon.campusops.oregonstate.edu/map/img/water.svg":
+            icons[5].innerHTML = this.responseText;
+            break;
          }
       }
   };
@@ -36,6 +39,7 @@ downloadSVG("eco2go");
 downloadSVG("plate");
 downloadSVG("bike");
 downloadSVG("transportation");
+downloadSVG("water");
 
 /* Toggle orange logos in layer select menu */
 var svgColorOn = function svgColorOn(event) {

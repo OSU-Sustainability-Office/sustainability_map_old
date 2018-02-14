@@ -10,6 +10,7 @@ var susTour;
 var trans;
 var vegan;
 var vegetarian;
+var water;
 
 // Variable that contains the most recently opened InfoWindow
 var infoWindow;
@@ -134,7 +135,7 @@ function initMap() {
   });
   susTour.addListener('click', togglePopup);
 
-  // OSU Sustainability Tour
+  // Transit
   trans = new google.maps.KmlLayer(src + "trans.kmz", {
     suppressInfoWindows: true,
     preserveViewport: true,
@@ -157,6 +158,14 @@ function initMap() {
     map: map
   });
   vegetarian.addListener('click', togglePopup);
+
+  // Water
+  water = new google.maps.KmlLayer(src + "water.kmz", {
+    suppressInfoWindows: true,
+    preserveViewport: true,
+    map: map
+  });
+  water.addListener('click', togglePopup);
 }
 
 // Toggles individual layers on the Google Map
@@ -190,6 +199,10 @@ var layerCallback = function(e) {
     case 'trans':
       toggleLayer([trans]);
       current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "FFB500") : current.setAttribute("data-neutral-color", "ffffff");
+      break;
+    case 'trans':
+      toggleLayer([water]);
+      current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "094074") : current.setAttribute("data-neutral-color", "ffffff");
       break;
   }
 }
