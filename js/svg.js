@@ -20,7 +20,7 @@ function downloadSVG(url) {
            case "http://carbon.campusops.oregonstate.edu/map/img/bike.svg":
             icons[3].innerHTML = this.responseText;
             break;
-          case "http://carbon.campusops.oregonstate.edu/map/img/instagram_logo.svg":
+          case "http://carbon.campusops.oregonstate.edu/map/img/transportation.svg":
            icons[4].innerHTML = this.responseText;
            break;
          }
