@@ -200,7 +200,7 @@ var layerCallback = function(e) {
       toggleLayer([trans]);
       current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "FFB500") : current.setAttribute("data-neutral-color", "ffffff");
       break;
-    case 'trans':
+    case 'water':
       toggleLayer([water]);
       current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "094074") : current.setAttribute("data-neutral-color", "ffffff");
       break;
