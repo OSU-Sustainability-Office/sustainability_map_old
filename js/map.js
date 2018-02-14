@@ -89,6 +89,8 @@ function getMediaInformation(imagesDOM) {
     var res = sendGETRequest(url)
     res = JSON.parse(res);
     var id = res.media_id;
+    var title = res.title;
+    var thumb = res.thumbnail_url;
 
     // This request retrieves Instagram's location id for the image.
     url = "https://api.instagram.com/v1/media/" + id + "?access_token=2105844702.1677ed0.9f9c0b0dc6fa4aedbd0c75cc50f4610d";
@@ -103,7 +105,9 @@ function getMediaInformation(imagesDOM) {
       // The structure of this object is dictated by Google Maps API.
       media[i] = {
         position: new google.maps.LatLng(44.557407, -123.285870), // Oak Creek Building's location
-        type: i // The location in the list is used as a type.
+        type: i, // The location in the list is used as a type.
+        "title": title,
+        "thumb": thumb
       }
     } else {
       // Build location data object and add to array.
@@ -111,7 +115,9 @@ function getMediaInformation(imagesDOM) {
       media[i] = {
         position: new google.maps.LatLng(loc.latitude, loc.longitude),
         type: i, // The location in the list is used as a type.
-        url: imagesDOM[i].getAttribute("href") // Link to the instagram post
+        url: imagesDOM[i].getAttribute("href"), // Link to the instagram post
+        "title": title,
+        "thumb": thumb
       }
     }
   }
@@ -132,10 +138,26 @@ var loadImageLayer = function loadImageLayer() {
   var markers = [];
   // This code comes from https://developers.google.com/maps/documentation/javascript/custom-markers.
   media.forEach(function(media) {
+    var type = media.type;
     var marker = new google.maps.Marker({
       position: media.position,
-      icon: icons[media.type].icon,
+      icon: icons[type].icon,
       map: map
+    });
+
+    // Instagram photo infoWindows.
+    marker.addListener("click", function() {
+      infoWindow.close();
+      infoWindow = new google.maps.InfoWindow({
+        content: "<center><a href=\""+media.url+"\"><img src=\""+media.thumb+"\" height=\"450\"></a><br /><p>"+media.title+"</p></center>",
+        maxWidth: "600",
+        position: media.position
+      });
+      infoWindow.open(map);
+
+      // Hide hint modal
+      var modal = document.getElementById("map-popup");
+      modal.classList.add("hidden");
     });
   });
 }
@@ -150,9 +172,12 @@ var feed = new Instafeed({
     accessToken: "2105844702.1677ed0.9f9c0b0dc6fa4aedbd0c75cc50f4610d", // OSUSustainable access token provided by instagram.
     sortBy: "most-recent",
     resolution: "thumbnail", // Gets images at 150x150 resolution.
-    limit: "35", // Will only grab the 35 most recent photos from the account.
+    limit: "15", // Will only grab the 35 most recent photos from the account.
                  // 20 is the maximum that instagram allows in "sandbox mode".
     target: "photo-container", // This is a hidden DOM element for holding all images.
-    after: loadImageLayer // Callback for when images are done.
+    after: loadImageLayer, // Callback for when images are done.
+    filter: function(img) { // This filters out images that don't have locations
+      return img.location != null;
+    }
 });
 feed.run();

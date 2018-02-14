@@ -180,10 +180,6 @@ var layerCallback = function(e) {
   var type = e.currentTarget.getAttribute("data-type");
   var current = document.getElementById(type);
   switch (type) {
-    case 'bottle':
-      toggleLayer([bottle]);
-      current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "006064") : current.setAttribute("data-neutral-color", "ffffff");
-      break;
     case 'eco2go':
       toggleLayer([eco]);
       current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "f57c00") : current.setAttribute("data-neutral-color", "ffffff");
@@ -201,7 +197,7 @@ var layerCallback = function(e) {
       current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "FFB500") : current.setAttribute("data-neutral-color", "ffffff");
       break;
     case 'water':
-      toggleLayer([water]);
+      toggleLayer([water, bottle]);
       current.getAttribute("data-neutral-color") == "ffffff" ? current.setAttribute("data-neutral-color", "094074") : current.setAttribute("data-neutral-color", "ffffff");
       break;
   }

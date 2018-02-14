@@ -8,24 +8,21 @@ function downloadSVG(url) {
       if (this.readyState == 4 && this.status == 200) {
          var url = this.responseURL;
          switch (url) {
-           case "http://carbon.campusops.oregonstate.edu/map/img/bottle.svg":
+           case "http://carbon.campusops.oregonstate.edu/map/img/eco2go.svg":
             icons[0].innerHTML = this.responseText;
             break;
-           case "http://carbon.campusops.oregonstate.edu/map/img/eco2go.svg":
+           case "http://carbon.campusops.oregonstate.edu/map/img/plate.svg":
             icons[1].innerHTML = this.responseText;
             break;
-           case "http://carbon.campusops.oregonstate.edu/map/img/plate.svg":
+           case "http://carbon.campusops.oregonstate.edu/map/img/bike.svg":
             icons[2].innerHTML = this.responseText;
             break;
-           case "http://carbon.campusops.oregonstate.edu/map/img/bike.svg":
-            icons[3].innerHTML = this.responseText;
-            break;
           case "http://carbon.campusops.oregonstate.edu/map/img/transportation.svg":
+           icons[3].innerHTML = this.responseText;
+           break;
+          case "http://carbon.campusops.oregonstate.edu/map/img/water.svg":
            icons[4].innerHTML = this.responseText;
            break;
-           case "http://carbon.campusops.oregonstate.edu/map/img/water.svg":
-            icons[5].innerHTML = this.responseText;
-            break;
          }
       }
   };
