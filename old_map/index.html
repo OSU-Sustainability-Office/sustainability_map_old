@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Sustainability Map | Oregon State University</title>
+
+    <!-- Include Favicon -->
+    <link rel="shortcut icon" href="http://communications.oregonstate.edu/sites/all/themes/doug_fir/favicon.ico" type="image/ico">
+
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <!-- Include CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="fonts/styles.css" rel="stylesheet">
+
+    <!-- Include Font Awesome icons: http://fontawesome.io/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
+
+    <!-- Include Javascript, and defer until HTML document is fully loaded. -->
+    <script type="text/javascript" src="js/instafeed.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" defer></script>
+    <script src="js/svg.js" defer></script>
+    <script src"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js" defer></script>
+    <script src="js/map.js" defer></script>
+  </head>
+  <body>
+    <div id="content">
+      <header>
+        <div id="map-logo">
+            <img src="img/map.svg" height="100">
+        </div>
+        <div id="header-text">
+          <h2>Oregon State University</h2><h1>Sustainability Map</h1>
+        </div>
+        <div id="menu">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+      </header>
+      <main>
+        <div id="map">
+          <!--<iframe src="https://www.google.com/maps/d/u/2/embed?mid=16NHgP2YkllF5W27J2gDucLp97hU" width="100%" height="100%"></iframe>-->
+        </div>
+      </main>
+    </div>
+    <div id="layer-select-flex">
+      <div id="layer-select-container">
+        <div id="layer-select" class="layer-select-animation">
+          <div id="layer-select-icons">
+            <div class="icon" id="eco2go" data-neutral-color="f57c00" data-type="eco2go"></div>
+            <div class="icon" id="food" data-neutral-color="7cb341" data-type="food"></div>
+            <div class="icon" id="tour" data-neutral-color="673ab7" data-type="tour"></div>
+            <div class="icon" id="trans" data-neutral-color="FFB500" data-type="trans"></div>
+            <div class="icon" id="water" data-neutral-color="094074" data-type="water"></div>
+          </div>
+          <div id="layer-select-text">
+            <div class="layer-choice" data-type="eco2go" data-neutral-color="f57c00">Eco2Go Return Stations</div>
+            <div class="layer-choice" data-type="food" data-neutral-color="7cb341">Food</div>
+            <div class="layer-choice" data-type="tour" data-neutral-color="673ab7">Sustainability Tour</div>
+            <div class="layer-choice" data-type="trans" data-neutral-color="FFB500">Transportation</div>
+            <div class="layer-choice" data-type="water" data-neutral-color="094074">Water</div>
+          </div>
+        </div>
+        <div id="layer-select-button">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div id="map-popup">
+      Hint: Click on a marker to learn more.
+    </div>
+    <div id="hamburger-menu" class="hidden">
+      <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-envira" aria-hidden="true"></i></div><div class="menu-text">Sustainability Office</div></a><br />
+      <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-facebook" aria-hidden="true"></i></div><div class="menu-text">Facebook Page</div></a><br />
+      <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-instagram" aria-hidden="true"></i></div><div class="menu-text">Instagram</div></a><br />
+      <a href="http://fa.oregonstate.edu/sustainability"><div class="menu-icon"><i class="fa fa-twitter" aria-hidden="true"></i></div><div class="menu-text">Twitter</div></a><br />
+    </div>
+    <div id="photo-container" class="hidden photo-container"></div>
+    <!-- Google Maps Scripts -->
+    <script src="js/googlemaps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5uoRD2wXTlKGxgZD3ey7Kbv0w6hnse1w&callback=initMap" async defer></script>
+  </body>
+</html>
