@@ -1,0 +1,7 @@
+These database schemas conform to GeoJSON 2016 specifications, as defined by the Internet Engineering Task Force. More info here: https://tools.ietf.org/html/rfc7841#section-2
+
+FeatureCollection objects will be used to organize select features into thematic collections, or tours. For example, a "Water Features Tour" may consist of a featureCollection of water features. The order of the elements in the features array will determine the order in which tour locations should be visited.
+
+A Feature is an object, or a point attributed to a specific spatial location. This can be a building, etc.
+
+A network is a system that is associated with multiple objects. For example, a bus route, bike rack, or a bioswale is a network. In contrast to a featureCollection, a network is not a collection of features - it's a system that exists independently from the features that provides services to those features. A bioswale can be both a feature and a network since it may filter runoff from multiple buildings.

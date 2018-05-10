@@ -1,0 +1,25 @@
+{
+  "name": "sustainability-map",
+  "version": "1.0.0",
+  "description": "This project aims to replace an aging sustainability map housed on the Sustainability Office's \"Food\" page.",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OSU-Sustainability-Office/sustainability_map.git"
+  },
+  "keywords": [
+    "osu"
+  ],
+  "author": "Jack Woods and Brogan Miner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OSU-Sustainability-Office/sustainability_map/issues"
+  },
+  "homepage": "https://github.com/OSU-Sustainability-Office/sustainability_map#readme"
+}
