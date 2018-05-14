@@ -29,6 +29,7 @@ function buildPolygons(json) {
   for (var i = 0; i < json.data.length; i++) {
     if (json.data[i].attributes.geometry != null && json.data[i].attributes.geometry.coordinates != null ) {
       var polygon = L.polygon(json.data[i].attributes.geometry.coordinates[0]).addTo(map);
+      console.log(polygon);
     }
   }
 }
