@@ -1,0 +1,35 @@
+body {
+  margin: 0px;
+}
+
+.searchBar {
+  position: relative;
+  height: 3em;
+  width: 100%;
+  background-color: #ccc;
+}
+
+#map {
+  position: fixed;
+  width: 100%;
+  padding: 0px;
+  background-color: #ddd;
+  bottom: 0px;
+  height: 100%;
+}
+#search {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  width: 70%;
+  margin: auto;
+  margin-top: .7em;
+  height: 1.5em;
+  box-shadow: 3px 4px;
+}
+#searchButton {
+  display: block;
+  position: absolute;
+  right: 15%;
+  top: 1.5em;
+}
