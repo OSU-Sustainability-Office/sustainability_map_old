@@ -26,10 +26,12 @@ body {
   margin-top: .7em;
   height: 1.5em;
   box-shadow: 3px 4px;
+  z-index: 1000;
 }
 #searchButton {
   display: block;
   position: absolute;
   right: 15%;
   top: 1.5em;
+  z-index: 1000;
 }
