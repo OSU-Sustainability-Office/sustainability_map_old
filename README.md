@@ -8,7 +8,9 @@ It will work similar to the [Corvallis Bus App](https://play.google.com/store/ap
   - Focusing on simplicity and interactivity,
   - Abstracting the user from non-relevant data until it "becomes" relevant through interactions,
   - Allowing a user to search for a point, then tapping that point to see more data.
+  
 Data will be provided to software developers by Anthropology students in ".csv" format.
+
 Other notable features will include:
  - URLs corresponding to various search terms (similar to google search). This is how default data will be set.
  - New icons/logos.
