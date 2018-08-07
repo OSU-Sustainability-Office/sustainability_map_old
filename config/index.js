@@ -50,7 +50,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/sustainability_map/',
+    assetsPublicPath: 'sustainability_map',
 
     /**
      * Source Maps
