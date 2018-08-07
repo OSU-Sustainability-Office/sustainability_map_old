@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-# sustainability_map
-
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-=======
 # OSU Sustainability Map
 **The map can be accessed [here](http://carbon.campusops.oregonstate.edu/map/).**
 
@@ -37,4 +14,3 @@ Data will be provided to software developers by Anthropology students in ".csv" 
 Other notable features will include:
  - URLs corresponding to various search terms (similar to google search). This is how default data will be set.
  - New icons/logos.
->>>>>>> 8fe61257f50c509f7fa77774de166d1cb09871b2
