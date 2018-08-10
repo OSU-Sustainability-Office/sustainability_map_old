@@ -40,6 +40,7 @@ name: 'featured',
       mapStyle: "position: absolute;top: 0px;height: calc(100%);left: 0px;",
       geojson: [],
       map: null,
+      clusterController: null,
       bottleRefillOptions: {
         pointToLayer: function(feature, latlng) {
           return L.circleMarker(latlng, {
@@ -163,7 +164,7 @@ name: 'featured',
   },
   created() {
     var promises = [];
-
+    this.clusterController = new cluster();
     promises.push(axios.get('/static/GeoJSON/bottle_refill.geojson').then(res => {this.geojson.push({name:'bottle_refill',json:res.data,options:this.bottleRefillOptions})}));
     promises.push(axios.get('/static/GeoJSON/eco2go_return.geojson').then(res => {this.geojson.push({name:'eco2eco2go_return',json:res.data,options:this.eco2goReturnOptions})}));
     promises.push(axios.get('/static/GeoJSON/food_gluten_free.geojson').then(res => {this.geojson.push({name:'food_gluten_free',json:res.data,options:this.foodGlutenFreeOptions})}));
@@ -177,16 +178,18 @@ name: 'featured',
     Promise.all(promises).then(()=> {
 
 
-      for (var com of this.$refs.groups) {
-        //This is kind of hacky but I could only really find the layer info this way
-        var layerObjects = Object.values(Object.values(com.mapObject._layers)[0]._layers);
+      // for (var com of this.$refs.groups) {
+      //   //This is kind of hacky but I could only really find the layer info this way
+      //   var layerObjects = Object.values(Object.values(com.mapObject._layers)[0]._layers);
+      //   console.log(com);
+      //   var layerName = com.$attrs.name;
+      //   if (layerName !=="tour_path")
+      //     for (var layer of layerObjects)
+      //       this.clusterController.addLayer(layerObjects);
+      // }
 
-        var layerName = com.$attrs.name;
-        if (layerName !=="tour_path")
-          for (var layer of layerObjects)
-            cluster.addLayer(layerObjects);
-      }
-      cluster.addMap(this.$refs.map.mapObject);
+      this.clusterController.addLayer(Object.values(this.$refs.map.mapObject._layers));
+      this.clusterController.addMap(this.$refs.map.mapObject);
     });
   }
 }
