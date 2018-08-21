@@ -21,11 +21,22 @@ export default {
   },
   methods: {
     querySearch: function (query, cb) {
-      let values = this.$store.getters.getAllPoints.filter(point => (point.properties.Name && point.properties.Name.includes(query)) || (point.properties.description && point.properties.description.includes(query)))
+      let values = this.$store.getters.getAllPoints.filter((point, index, inputArray) => (
+        (
+          // Check that the item's name includes query
+          (point.properties.Name && point.properties.Name.toLowerCase().includes(query.toLowerCase()))
+          // Check that description includes query
+          || (point.properties.description && point.properties.description.toLowerCase().includes(query.toLowerCase()))
+        )
+        // Filter duplicates
+        && inputArray.map(point => point.properties.Name).indexOf(point.properties.Name) === index))
+
+      // Build autocomplete list
       let r = []
-      for (let v of values) {
-        r.push({ value: v.properties.Name })
-      }
+      values.forEach(function(point) {
+        r.push({ value: point.properties.Name })
+      })
+
       // eslint-disable-next-line
       cb(r)
     },
