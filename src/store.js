@@ -14,7 +14,6 @@ const store = {
       for (let layer of state.geolayers) {
         r = r.concat(layer.features)
       }
-      console.log(r)
       return r
     }
   },
