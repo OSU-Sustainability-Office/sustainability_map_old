@@ -1,4 +1,7 @@
 # OSU Sustainability Map
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/OSU-Sustainability-Office/sustainability_map.svg)](https://greenkeeper.io/)
+
 **The map can be accessed [here](http://carbon.campusops.oregonstate.edu/map/).**
 
 This project aims to replace an aging sustainability map housed on the [Sustainability Office's "Food" page](http://fa.oregonstate.edu/sustainability/operations/food). The new map will add new features, and will provide a more engaging map experience using Google Maps JavaScript API.
