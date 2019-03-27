@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     querySearch: function (query, cb) {
-      let values = this.$store.getters.getAllPoints.filter((point, index, arr) => (
+      let values = this.$store.getters.allPoints.filter((point, index, arr) => (
         // Check that the item's name includes query
         (point.properties.Name && point.properties.Name.toLowerCase().includes(query.toLowerCase())) ||
         // Check that description includes query
@@ -44,6 +44,8 @@ export default {
       cb(r)
     },
     handleSelect: function (item) {
+      this.$store.commit('filterPoints', item.array)
+      this.$eventHub.$emit('updateClusters')
     }
   }
 }

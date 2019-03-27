@@ -59,7 +59,6 @@ class ClusterControl {
 
     this.clusteringPoints = []
 
-    this.clusterableLayers = []
     this.removedPoints = []
     this.map = null
   }
@@ -81,16 +80,6 @@ class ClusterControl {
     return Math.abs((this.map.getBounds().getSouthEast().lat - this.map.getBounds().getNorthWest().lat) / this.height)
   }
 
-  addLayer (val) {
-    var r = []
-    for (var l of val) {
-      if (l._latlng && l._radius) {
-        r.push(l)
-      }
-    }
-    this.clusterableLayers.push(r)
-  }
-
   addPointToCluster (point) {
     let maxIndex = this.width * this.height
     const ver = Math.round(Math.abs((point._latlng.lat - this.map.getBounds().getNorthWest().lat)) / this.unitHeight())
@@ -103,7 +92,7 @@ class ClusterControl {
   displayClusters () {
     for (var cluster of this.clusteringPoints) {
       if (cluster.innerPoints.length > 1) {
-        for (var point of cluster.innerPoints) {
+        for (let point of cluster.innerPoints) {
           this.map.removeLayer(point)
           this.removedPoints.push(point)
         }
@@ -123,8 +112,8 @@ class ClusterControl {
   }
 
   updateClustersInPoints () {
-    for (var layer of this.clusterableLayers) {
-      for (var point of layer) {
+    for (let point of Object.values(this.map._layers)) {
+      if (point._latlng) {
         this.addPointToCluster(point)
       }
     }

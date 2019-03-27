@@ -1,8 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "tour_path",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "Name": "Sustainability Walking Tour", "description": "Follow this tour line to see some of OSU's sustainability highlights! A brochure style layout of this tour can be found here: http:\/\/fa.oregonstate.edu\/sustainability\/resources-visitors" }, "geometry": { "type": "LineString", "coordinates": [ [ -123.2731998, 44.5670597, 0.0 ], [ -123.2731783, 44.5667693, 0.0 ], [ -123.2788807, 44.5667922, 0.0 ], [ -123.2799375, 44.5667769, 0.0 ], [ -123.2799214, 44.5645564, 0.0 ], [ -123.2740474, 44.5645602, 0.0 ], [ -123.2741278, 44.5625843, 0.0 ], [ -123.2720786, 44.5625728, 0.0 ], [ -123.2721323, 44.5619536, 0.0 ], [ -123.2723147, 44.5617549, 0.0 ], [ -123.272202, 44.5610401, 0.0 ], [ -123.2760966, 44.5606694, 0.0 ], [ -123.2763863, 44.5619383, 0.0 ], [ -123.2897168, 44.5620797, 0.0 ], [ -123.2896739, 44.560398, 0.0 ], [ -123.2889444, 44.560184, 0.0 ], [ -123.2888907, 44.5597253, 0.0 ], [ -123.2889551, 44.5601878, 0.0 ], [ -123.2896739, 44.5604018, 0.0 ], [ -123.2897168, 44.5668113, 0.0 ], [ -123.2944107, 44.566796, 0.0 ] ] } }
-]
-}
