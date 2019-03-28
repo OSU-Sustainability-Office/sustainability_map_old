@@ -2,7 +2,7 @@
 # @Date:   2019-03-28T12:53:16-07:00
 # @Email:  brogan.miner@oregonstate.edu
 # @Last modified by:   Brogan
-# @Last modified time: 2019-03-28T12:56:21-07:00
+# @Last modified time: 2019-03-28T13:19:31-07:00
 
 language: node_js
 node_js:
@@ -14,7 +14,6 @@ cache:
 
 script:
 - |
-  if [ "$TRAVIS_BRANCH" == "master" ]; then
   if [ "$TRAVIS_BRANCH" == "master" ]; then
     npm run build
   else
