@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-satge": "vue-cli-service build --mode staging"
+    "build-stage": "vue-cli-service build --mode staging"
   },
   "dependencies": {
     "axios": "^0.18.0",
