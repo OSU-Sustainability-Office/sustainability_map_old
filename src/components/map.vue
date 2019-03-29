@@ -3,14 +3,14 @@
 @Date:   2019-03-26T12:15:39-07:00
 @Email:  brogan.miner@oregonstate.edu
 @Last modified by:   Brogan
-@Last modified time: 2019-03-27T17:30:21-07:00
+@Last modified time: 2019-03-28T17:45:32-07:00
 -->
 
 <template>
-    <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' v-loading="!this.queryFeatures(this.queryString).length > 0 || !this.queryBuildings(this.queryString).length > 0">
+    <l-map :style="mapStyle" :zoom="zoom" :center="center" ref='map' v-loading="!this.queryFeatures(this.queryString) || !this.queryBuildings(this.queryString) || !storeInit">
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <l-geo-json v-for='(item, index) of this.queryFeatures(this.queryString)' :options='jsonOptions' :key='index' :geojson='item' ref="pointLayers"></l-geo-json>
-        <l-geo-json v-for='(item, index) of this.queryBuildings(this.queryString)' :key='index' :geojson='item' ref="buildingLayers"></l-geo-json>
+        <l-geo-json v-for='(item, index) of mapFeatures' :options='jsonOptions' :key='index+"-feature"' :geojson='item' ref="pointLayers"></l-geo-json>
+        <l-geo-json v-for='item of this.queryBuildings(this.queryString)' :options='buildingOptions' :key='item.properties.buildingID' :geojson='item' ref="buildingLayers"></l-geo-json>
     </l-map>
 </template>
 <script>
@@ -22,6 +22,7 @@ import { LMap, LTileLayer, LGeoJson } from 'vue2-leaflet'
 
 export default {
   name: 'featured',
+  props: ['query'],
   components: {
     LMap,
     LTileLayer,
@@ -38,6 +39,20 @@ export default {
       clusterController: null,
       queryString: /.*/,
       jsonOptions: {
+        onEachFeature: (feature, layer) => {
+          layer.on('click', e => {
+
+            // window.vue.$eventHub.$emit('clickedFeature', )
+            // document.execCommand('copy')
+          })
+          layer.on('mouseover', function (e) {
+            e.target.setStyle({ fillColor: '#000', color: '#000' })
+            e.target.bindTooltip(e.target.feature.properties.Name, {className: 'leafletTooltip'}).openTooltip()
+          })
+          layer.on('mouseout', v => {
+            this.$refs.pointLayers.forEach(e => { e.mapObject.resetStyle(v.target) })
+          })
+        },
         pointToLayer: (feature, latlng) => {
           return L.circleMarker(latlng, {
             color: feature.properties.color,
@@ -48,6 +63,38 @@ export default {
             radius: 5
           })
         }
+      },
+      buildingOptions: {
+        onEachFeature: (feature, layer) => {
+          layer.on('click', e => {
+            this.$router.push('/building/' + e.target.feature.properties.id)
+            // window.vue.$eventHub.$emit('clickedBuilding', )
+            // document.execCommand('copy')
+          })
+          layer.on('mouseover', function (e) {
+            e.target.setStyle({ fillColor: '#000', color: '#000' })
+            e.target.bindTooltip(e.target.feature.properties.Name, {className: 'leafletTooltip'}).openTooltip()
+          })
+          layer.on('mouseout', v => {
+            this.$refs.buildingLayers.forEach(e => { e.mapObject.resetStyle(v.target) })
+          })
+        },
+        style: {
+          weight: 2,
+          color: '#D73F09',
+          opacity: 1,
+          fillColor: '#D73F09',
+          fillOpacity: 0.7
+        }
+      }
+    }
+  },
+  watch: {
+    query: function (value) {
+      if (value === '') {
+        this.queryString = /.*/
+      } else {
+        this.queryString = value
       }
     }
   },
@@ -66,8 +113,22 @@ export default {
   computed: {
     ...mapGetters([
       'queryFeatures',
-      'queryBuildings'
-    ])
+      'queryBuildings',
+      'queryBuildingFeatures',
+      'storeInit'
+    ]),
+    mapFeatures: {
+      get () {
+        let allFeatures = this.queryFeatures(this.queryString)
+        let buildings = this.queryBuildings(this.queryString)
+        let buildingFeatures = []
+        for (let building of buildings) {
+          buildingFeatures = buildingFeatures.concat(this.queryBuildingFeatures(building.properties.id))
+        }
+
+        return allFeatures.filter(x => !buildingFeatures.includes(x))
+      }
+    }
   },
   methods: {
     color: function (name) {
@@ -120,8 +181,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
 @import "../../node_modules/leaflet/dist/leaflet.css";
+.leafletTooltip {
+  background-color: $--color-black;
+  color: $--color-white;
+  font-family: "StratumNo2";
+  font-size: 18px;
+}
 </style>
 
 <style scoped>

@@ -3,7 +3,7 @@
  * @Date:   2019-03-26T10:38:48-07:00
  * @Email:  brogan.miner@oregonstate.edu
  * @Last modified by:   Brogan
- * @Last modified time: 2019-03-27T15:17:17-07:00
+ * @Last modified time: 2019-03-28T18:13:52-07:00
  */
 
 import axios from 'axios'
@@ -18,5 +18,8 @@ export default {
   },
   buildings: async () => {
     return (await callAPI('buildings')).data.data
+  },
+  buildingImage: async id => {
+    return (await callAPI('buildingImage?id=' + id)).data
   }
 }

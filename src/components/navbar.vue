@@ -3,7 +3,7 @@
 @Date:   2019-03-27T14:08:44-07:00
 @Email:  brogan.miner@oregonstate.edu
 @Last modified by:   Brogan
-@Last modified time: 2019-03-27T19:28:22-07:00
+@Last modified time: 2019-03-28T17:58:53-07:00
 -->
 
 <template>
@@ -70,7 +70,8 @@ export default {
     left: 0;
     width: 100%;
     background-color: #D73F09;
-    height: 60px;
+    height: 59px;
+    border-bottom: solid 1px white;
   }
   #logo {
     height: calc(60px - 1em);

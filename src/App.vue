@@ -3,7 +3,7 @@
 @Date:   2019-03-26T12:00:17-07:00
 @Email:  brogan.miner@oregonstate.edu
 @Last modified by:   Brogan
-@Last modified time: 2019-03-27T19:30:16-07:00
+@Last modified time: 2019-03-28T15:59:18-07:00
 -->
 
 <template>
@@ -14,12 +14,12 @@
     <el-main style='height: 100%; width: 100%'>
       <el-row style='height: 100%'>
         <el-col :span='6' style='height: 100%;'>
-          <mapkey />
+          <mapkey :query='activeQuery' @updateQuery='activeQuery=$event'/>
         </el-col>
-        <el-col :span='12' style='height: 100%;'>
-          <mapview />
+        <el-col :span='($route.path === "/")? 18 : 12' style='height: 100%;'>
+          <mapview :query='activeQuery' />
         </el-col>
-        <el-col :span='6' style='height: 100%;'>
+        <el-col :span='($route.path === "/")? 0 : 6' style='height: 100%;'>
           <router-view/>
         </el-col>
       </el-row>
@@ -45,6 +45,11 @@ export default {
     this.loadAllFeatures().then(() => {
       this.loadAllBuildings()
     })
+  },
+  data () {
+    return {
+      activeQuery: ''
+    }
   },
   methods: {
     ...mapActions([
